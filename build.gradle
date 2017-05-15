@@ -1,0 +1,86 @@
+/*plugins {
+    id "org.sonarqube" version "1.0"
+}
+
+ext{
+    userName = ''
+    password = ''
+    releaseVersion = "-SNAPSHOT"
+    if (System.properties['profile'] == 'product') {
+        releaseVersion = ''
+    }
+    println("releaseVersion:"+releaseVersion)
+}*/
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    configurations {
+        all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        all*.exclude group: 'org.springframework', module: 'spring'
+        all { resolutionStrategy.cacheChangingModulesFor 1, 'minutes' }
+    }
+
+    repositories {
+        /*ivy {
+            url "http://nexus.guahao-inc.com/nexus/content/groups/public/"
+            layout "maven"
+        }
+        maven { url "http://nexus.guahao-inc.com/nexus/content/groups/ProductGroup" }*/
+        mavenCentral()
+    }
+
+    idea {
+        module {
+            excludeDirs = []
+            [".idea", ".gradle", '.settings', 'build', 'classes'].each {
+                excludeDirs << file("$it")
+            }
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.debug = "on"
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    tasks.withType(Javadoc) {
+        options.encoding = "UTF-8"
+        options.charSet = "UTF-8"
+    }
+
+    task cleanAll << {
+        println "Clean project.."
+        delete buildDir
+    }
+
+    /*task initSourceFolders {
+        sourceSets*.java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+    }*/
+
+    /*task init << {
+        println '+---------------------------------------------------+'
+        println '|                                                   |'
+        println "| B U I L D I N G $project.name $version ...         "
+        println '|                                                   |'
+        println '+---------------------------------------------------+'
+    }
+
+    task copyTask(type: Copy) {
+        from ""+System.properties['autoconfig.userProperties']
+        into 'build/resources/main'
+        rename ('antx.properties', 'production.properties')
+    }
+
+    copyTask.doFirst {
+        println "Copy antx file " + System.properties['autoconfig.userProperties']
+    }*/
+
+    dependencies {
+        testCompile("junit:junit:4.11")
+    }
+}
+

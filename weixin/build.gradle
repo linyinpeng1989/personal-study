@@ -1,0 +1,54 @@
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+ext{
+    springVersion = "4.3.7.RELEASE"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    /* Junit */
+    testCompile("junit:junit:4.12")
+
+    /* Spring */
+    compile("org.springframework:spring-core:$springVersion")
+    compile("org.springframework:spring-web:$springVersion")
+    compile("org.springframework:spring-webmvc:$springVersion")
+    compile("org.springframework:spring-beans:$springVersion")
+    compile("org.springframework:spring-context:$springVersion")
+    compile("org.springframework:spring-context-support:$springVersion")
+    compile("org.springframework:spring-test:$springVersion")
+
+    /* Servlet */
+    compile("javax.servlet:javax.servlet-api:3.1.0")
+
+    /* common */
+    compile("org.apache.commons:commons-lang3:3.5")
+    compile("org.apache.commons:commons-collections4:4.1")
+    compile("org.apache.commons:commons-io:1.3.2")
+
+    /* dom4j */
+    compile("dom4j:dom4j:1.6.1")
+
+    /* xstream */
+    compile("com.thoughtworks.xstream:xstream:1.4.9")
+
+    /* fastjson */
+    compile("com.alibaba:fastjson:1.2.7")
+
+    /* http */
+    compile("org.apache.httpcomponents:httpcore:4.4.4")
+    compile("org.apache.httpcomponents:httpclient:4.5.2")
+
+    /* Zxing */
+    compile("com.google.zxing:zxingorg:3.3.0")
+
+    /* freemarker */
+    compile("org.freemarker:freemarker:2.3.23")
+}

@@ -1,0 +1,39 @@
+version '1.0.0'
+
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+ext{
+    springVersion = "4.3.7.RELEASE"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile("junit:junit:4.8.1")
+
+    /* JSP相关 */
+    compile("jstl:jstl:1.2")
+    compile("javax.servlet:javax.servlet-api:3.1.0")
+
+    /* Spring */
+    compile("org.springframework:spring-core:$springVersion")
+    compile("org.springframework:spring-context:$springVersion")
+    compile("org.springframework:spring-beans:$springVersion")
+    compile("org.springframework:spring-tx:$springVersion")
+    compile("org.springframework:spring-webmvc:$springVersion")
+    compile("org.springframework:spring-jms:$springVersion")
+
+    /* xbean */
+    compile("org.apache.xbean:xbean-spring:4.5")
+
+    /* activemq */
+    compile("org.apache.activemq:activemq-core:5.7.0")
+    compile("org.apache.activemq:activemq-pool:5.14.4")
+
+    /* 其他 */
+    compile("commons-httpclient:commons-httpclient:3.1")
+}

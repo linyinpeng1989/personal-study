@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://activemq.apache.org/schema/core
+       http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+    <!-- 配置activemq连接工厂 -->
+    <amq:connectionFactory id="amqConnectionFactory" brokerURL="tcp://127.0.0.1:61616"
+                           userName="admin" password="admin"/>
+
+    <!-- 配置JMS连接工厂 -->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="amqConnectionFactory"/>
+        <property name="sessionCacheSize" value="100"/>
+    </bean>
+
+    <!-- 定义消息队列(Queue) -->
+    <bean id="demoQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="Jaycekon"/>
+    </bean>
+
+    <!-- 配置JMS模板，Spring提供的JMS工具类，它发送、接收消息 -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="defaultDestination" ref="demoQueueDestination" />
+        <property name="receiveTimeout" value="10000" />
+        <!-- true是topic，false是queue，默认是false，此处显示写出false -->
+        <property name="pubSubDomain" value="false" />
+    </bean>
+
+    <!-- 配置消息队列监听器 -->
+    <bean id="queueMessageListener" class="com.linyp.study.activemq.QueueMessageListener"/>
+
+    <!-- 将JMS连接工厂、消息队列（Queue）、消息监听器注入到消息监听容器中 -->
+    <bean id="queueListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <!-- JMS连接工厂 -->
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <!-- 消息队列 -->
+        <property name="destination" ref="demoQueueDestination"/>
+        <!-- 消息监听器 -->
+        <property name="messageListener" ref="queueMessageListener"/>
+    </bean>
+</beans>

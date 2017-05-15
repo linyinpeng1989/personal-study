@@ -1,0 +1,3 @@
+dependencies {
+    compile("org.lucee:oswego-concurrent:1.3.4")
+}
