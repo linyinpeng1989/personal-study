@@ -12,6 +12,10 @@ ext{
     println("releaseVersion:"+releaseVersion)
 }*/
 
+ext{
+    springVersion = "4.3.7.RELEASE"
+}
+
 allprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
@@ -80,7 +84,8 @@ allprojects {
     }*/
 
     dependencies {
-        testCompile("junit:junit:4.11")
+        /* Junit */
+        testCompile("junit:junit:4.12")
     }
 }
 

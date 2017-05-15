@@ -1,16 +1,4 @@
-version '1.0.0'
-
 apply plugin: 'war'
-
-sourceCompatibility = 1.8
-
-ext{
-    springVersion = "4.3.7.RELEASE"
-}
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     testCompile("junit:junit:4.8.1")

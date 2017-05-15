@@ -1,4 +1,4 @@
 dependencies {
-    // netty
+    /* netty */
     compile("io.netty:netty-all:4.0.36.Final")
 }

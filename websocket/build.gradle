@@ -1,19 +1,10 @@
 apply plugin: 'war'
 
-idea {
-    module {
-        excludeDirs = []
-        [".idea", ".gradle", '.settings', 'build', 'classes'].each {
-            excludeDirs << file("$it")
-        }
-    }
-}
-
 dependencies {
-    compile("org.springframework:spring-webmvc:4.2.7.RELEASE")
-    compile("org.springframework:spring-web:4.2.7.RELEASE")
-    compile("org.springframework:spring-websocket:4.2.7.RELEASE")
-    compile("org.springframework:spring-messaging:4.2.7.RELEASE")
+    compile("org.springframework:spring-webmvc:$springVersion")
+    compile("org.springframework:spring-web:$springVersion")
+    compile("org.springframework:spring-websocket:$springVersion")
+    compile("org.springframework:spring-messaging:$springVersion")
 
     compile("com.fasterxml.jackson.core:jackson-core:2.8.1")
     compile("javax.servlet:javax.servlet-api:3.1.0")
