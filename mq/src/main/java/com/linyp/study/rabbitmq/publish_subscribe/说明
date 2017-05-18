@@ -1,0 +1,7 @@
+EmitLog + ReceiveLogs ：fanout类型exchange
+
+EmitLogDirect + ReceiveLogsDirect ：direct类型exchange
+
+EmitLogTopic + ReceiveLogsTopic ：topic类型exchange
+
+
