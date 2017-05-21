@@ -51,7 +51,7 @@ public class Worker {
 
     private static void doWork(String message) throws InterruptedException {
         for (char ch: message.toCharArray()) {
-            if (ch == '.') Thread.sleep(2000);
+            if (ch == '.') Thread.sleep(20000);
         }
     }
 }

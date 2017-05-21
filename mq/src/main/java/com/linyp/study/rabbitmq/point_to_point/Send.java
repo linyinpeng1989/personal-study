@@ -33,7 +33,7 @@ public class Send {
         //String message = "Hello World!";
         for (int index = 0; index < 20; index++) {
             String message = getMessage(args) + " NO." + index;
-            // 发布消息：默认exchange，指定routingKey
+            // 发布消息：默认exchange，指定routingKey为队列名
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
             System.out.println(" [x] Sent '" + message + "'");
         }
