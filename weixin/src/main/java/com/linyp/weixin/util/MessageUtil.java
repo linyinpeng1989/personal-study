@@ -133,13 +133,27 @@ public class MessageUtil {
         button1.setType(WeixinConstant.MENUTYPE_CLICK);
         button1.setKey("click_11");
 
-        ViewButton button2 = new ViewButton();
-        button2.setName("view菜单");
-        button2.setType(WeixinConstant.MENUTYPE_VIEW);
-        button2.setUrl("http://www.imooc.com");
+        Button button2 = new ViewButton();
+        button2.setName("组合菜单1");
+
+        ViewButton button21 = new ViewButton();
+        button21.setName("view菜单");
+        button21.setType(WeixinConstant.MENUTYPE_VIEW);
+        button21.setUrl("http://www.imooc.com");
+
+        String url = WeixinConstant.AUTHORIZE_URL.replace("{APPID}", WeixinConstant.APPID)
+                .replace("{REDIRECT_URI}", WeixinConstant.CALLBACK_SERVER + "/wx/avoidLogin")
+                .replace("{SCOPE}", WeixinConstant.SNSAPI_USERINFO)
+                .replace("{STATE}", "https://service.guahao.com/json/white/search/mediafocus.jsonp?pageNo=1&pageSize=5&label=1&category=5&type=130");
+        ViewButton button22 = new ViewButton();
+        button22.setName("测试view");
+        button22.setType(WeixinConstant.MENUTYPE_VIEW);
+        button22.setUrl(url);
+
+        button2.setSub_button(Arrays.asList(button21, button22));
 
         Button button3 = new Button();
-        button3.setName("组合菜单");
+        button3.setName("组合菜单2");
 
         /*
             模拟微信免登陆并跳转页面，REDIRECT_URI为免登陆接口，STATE为后续跳转页面

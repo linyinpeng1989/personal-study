@@ -17,7 +17,7 @@ public class Worker {
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
-        // 直到当前消费者发回ach之后，才会再接收消息（公平分发）
+        // 直到当前消费者发回ack之后，才会再接收消息（公平分发）
         channel.basicQos(1);
 
         // 持久化的队列
@@ -43,8 +43,8 @@ public class Worker {
                 }
             }
         };
-        // true表示自动接收，不需要消费端发送ack，队列会把已经发送的消息删除；
-        // false表示需要消费端发送ack，队列接收到ach之后才会把对应的删除消息
+        // true表示自动接收，不需要消费者显示地发送ack，队列会把已经发送的消息删除；
+        // false表示需要消费者显示地发送ack，队列接收到ach之后才会把对应的删除消息
         boolean autoAck = false;
         channel.basicConsume(DURABLE_QUEUE_NAME, autoAck, consumer);
     }

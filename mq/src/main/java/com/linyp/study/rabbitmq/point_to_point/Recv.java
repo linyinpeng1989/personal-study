@@ -36,9 +36,9 @@ public class Recv {
                 }
             }
         };
-        // true表示自动接收，不需要消费端发送ack，队列会把已经发送的消息删除；
-        // false表示需要消费端发送ack，队列接收到ach之后才会把对应的删除消息
-        channel.basicConsume(QUEUE_NAME, true, consumer);
+        // true表示自动接收，不需要消费者显示地发送ack，队列会把已经发送的消息删除；
+        // false表示需要消费者显示地发送ack，队列接收到ach之后才会把对应的删除消息
+        channel.basicConsume(QUEUE_NAME, true, consumer);   // 消费者订阅队列
     }
 
     private static void doWork(String message) throws InterruptedException {

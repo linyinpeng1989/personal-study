@@ -7,9 +7,11 @@ public interface WeixinConstant {
     /** 微信开发模式服务器配置中填写的Token */
     String TOKEN = "zxc123asd456qwe789";
     /** 微信公众号APPID */
-    String APPID = "wx33c96e8327e5907f";
+    //String APPID = "wx33c96e8327e5907f";      // 测试账号
+    String APPID = "wxe0871b5ef86daf18";
     /** 微信公众号APPSECRET */
-    String APPSECRET = "5b66ff36c3963a7c6033893c6bb93736";
+    //String APPSECRET = "5b66ff36c3963a7c6033893c6bb93736";    // 测试账号
+    String APPSECRET = "b26a9edb9b6b22444f83b6b247b7f7cf";
 
     /** 获取微信ACCESS_TOKEN接口地址 */
     String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={APPID}&secret={APPSECRET}";
@@ -64,7 +66,7 @@ public interface WeixinConstant {
     String MENUTYPE_MEDIA_ID = "media_id";
     String MENUTYPE_VIEW_LIMITED = "view_limited";
 
-    String ACCESS_TOKEN = "E4AiKSjUnyb-jSTZ-4Ha45x5ABgsab9Nl7LkF42N1kDt0bFxJvzbDy3skExcs7O_VEq7c2PnZ520yB0aA8K79UsAA0fEnwfw0s5Oe-7NMOQyA7Rs1ycFPN3T2OWmWrHzUSOiAFADBX";
+    String ACCESS_TOKEN = "xSkNtQ3lnoGSEOeIjDYy4kC6oRB76SE8J45RBeAHcQJToZtz6Cm7CjXvVDJ3EOMpc2qhzzefaCSqt-qiZm5iJks6QJccufMThM86NsR4lYIEEMaAHAOOW";
     String MEDIA_ID = "C4KMB-5X5YwudJ7p1WfqCJdwFTW7BWyJJltM-UodLXvDzhkNqBlL1_iVvZwM7IiC";
     String TEMPLATE_ID = "EHv9m4ZOoM4GS645ZResbs3gUBhwrIvmS4uWoFigjgs";
 

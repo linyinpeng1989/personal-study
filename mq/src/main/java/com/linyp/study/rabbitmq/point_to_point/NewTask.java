@@ -36,7 +36,7 @@ public class NewTask {
         //String message = "Hello World!";
         for (int index = 0; index < 30; index++) {
             String message = getMessage(args) + " NO." + index;
-            // 发布消息：默认exchange，指定routingKey，消息持久化
+            // 发布消息：默认交换器（空字符串），指定路由键，消息持久化
             channel.basicPublish("", DURABLE_QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
             System.out.println(" [x] Sent '" + message + "'");
         }

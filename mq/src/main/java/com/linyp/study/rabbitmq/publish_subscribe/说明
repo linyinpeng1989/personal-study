@@ -1,7 +1,7 @@
-EmitLog + ReceiveLogs ：fanout类型exchange
+EmitLog + ReceiveLogs ：fanout类型交换器
 
-EmitLogDirect + ReceiveLogsDirect ：direct类型exchange
+EmitLogDirect + ReceiveLogsDirect ：direct类型交换器
 
-EmitLogTopic + ReceiveLogsTopic ：topic类型exchange
+EmitLogTopic + ReceiveLogsTopic ：topic类型交换器
 
 

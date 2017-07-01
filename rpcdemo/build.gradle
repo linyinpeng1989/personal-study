@@ -1,0 +1,32 @@
+dependencies {
+    /* junit */
+    testCompile("junit:junit:4.12")
+
+    /* slf4j */
+    compile("org.slf4j:slf4j-log4j12:1.7.12")
+
+    /* Spring */
+    compile("org.springframework:spring-context:$springVersion")
+    testCompile("org.springframework:spring-test:$springVersion")
+
+    /* Netty */
+    compile("io.netty:netty-all:4.0.45.Final")
+
+    /* ProtoStuff 序列化 */
+    compile("com.dyuproject.protostuff:protostuff-core:1.0.12")
+    compile("com.dyuproject.protostuff:protostuff-runtime:1.0.12")
+
+    /* ZooKeeper */
+    compile("org.apache.zookeeper:zookeeper:3.4.10")
+
+    /* Appach Commons Collections */
+    compile("org.apache.commons:commons-collections4:4.1")
+    compile("commons-io:commons-io:2.5")
+
+    /* cglib */
+    compile("cglib:cglib:3.0")
+
+    /* jsckson */
+    compile("com.fasterxml.jackson.core:jackson-core:2.8.8")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.8.8")
+}
