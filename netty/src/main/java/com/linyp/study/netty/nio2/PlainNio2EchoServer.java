@@ -82,6 +82,7 @@ public class PlainNio2EchoServer {
                     }
                 }
 
+                @Override
                 public void failed(Throwable exc, ByteBuffer attachment) {
                     try {
                         channel.close();
@@ -92,6 +93,7 @@ public class PlainNio2EchoServer {
             });
         }
 
+        @Override
         public void failed(Throwable exc, ByteBuffer buffer) {
             try {
                 channel.close();

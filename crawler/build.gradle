@@ -1,0 +1,33 @@
+//
+apply plugin: 'war'
+//
+//sourceCompatibility = 1.8
+//
+//repositories {
+//    mavenCentral()
+//}
+
+dependencies {
+    compile("org.jsoup:jsoup:1.10.2")
+    compile("javax.websocket:javax.websocket-api:1.1")
+    compile("org.glassfish.tyrus.bundles:tyrus-standalone-client:1.13.1")
+
+    /* Berkeley DB */
+    compile("com.sleepycat:je:5.0.73")
+
+    /* Spring */
+    compile("org.springframework:spring-core:$springVersion")
+    compile("org.springframework:spring-context:$springVersion")
+    compile("org.springframework:spring-beans:$springVersion")
+    compile("org.springframework:spring-tx:$springVersion")
+    compile("org.springframework:spring-webmvc:$springVersion")
+    compile("org.springframework:spring-websocket:$springVersion")
+
+    /* httpclient */
+    compile("org.apache.commons:commons-lang3:3.3.2")
+    compile("org.apache.httpcomponents:httpclient:4.5.2")
+    compile("org.apache.httpcomponents:httpcore:4.4.6")
+
+    /* OCR */
+    compile('net.sourceforge.javaocr:javaocr-core:1.0')
+}
