@@ -7,11 +7,17 @@ public interface WeixinConstant {
     /** 微信开发模式服务器配置中填写的Token */
     String TOKEN = "zxc123asd456qwe789";
     /** 微信公众号APPID */
-    //String APPID = "wx33c96e8327e5907f";      // 测试账号
-    String APPID = "wxe0871b5ef86daf18";
+    String APPID = "wx33c96e8327e5907f";      // 测试账号
+    //String APPID = "wxe0871b5ef86daf18";
     /** 微信公众号APPSECRET */
-    //String APPSECRET = "5b66ff36c3963a7c6033893c6bb93736";    // 测试账号
-    String APPSECRET = "b26a9edb9b6b22444f83b6b247b7f7cf";
+    String APPSECRET = "5b66ff36c3963a7c6033893c6bb93736";    // 测试账号
+    //String APPSECRET = "8d216f1f1bc47fd9fa06a46b11ebf481";
+
+    /**
+     * 微信小程序APPID和APPSECRET
+     */
+    String WXXCX_APPID = "wx521605348b01c27d";
+    String WXXCX_APPSECRET = "005ed0d68f0daf93a4f6ef48694b9b51";
 
     /** 获取微信ACCESS_TOKEN接口地址 */
     String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={APPID}&secret={APPSECRET}";
@@ -33,7 +39,8 @@ public interface WeixinConstant {
     String GET_ALL_TEMPLATE_URL = "https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token={ACCESS_TOKEN}";
     /** 发送模板消息接口地址 */
     String SEND_TEMPLATE_MSG_URL = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={ACCESS_TOKEN}";
-
+    /** 微信小程序获取SessionKey */
+    String WXXCX_SESSIONKEY_URL = "https://api.weixin.qq.com/sns/jscode2session?appid={APPID}&secret={SECRET}&js_code={JSCODE}&grant_type=authorization_code";
     /** 消息类型 */
     String MESSAGE_TEXT = "text";
     String MESSAGE_IMAGE = "image";
@@ -65,13 +72,14 @@ public interface WeixinConstant {
     String MENUTYPE_LOCATION_SELECT = "location_select";
     String MENUTYPE_MEDIA_ID = "media_id";
     String MENUTYPE_VIEW_LIMITED = "view_limited";
+    String MENUTYPE_MINI_PROGRAM = "miniprogram";
 
-    String ACCESS_TOKEN = "xSkNtQ3lnoGSEOeIjDYy4kC6oRB76SE8J45RBeAHcQJToZtz6Cm7CjXvVDJ3EOMpc2qhzzefaCSqt-qiZm5iJks6QJccufMThM86NsR4lYIEEMaAHAOOW";
+    String ACCESS_TOKEN = "p7IlL1PZc1mLhUn_qW4oqdvmuvd4V20PoMJAYWXqLveDCWnH__k8e9VMMXP3M6KgH4zQES0YnPmymIj8obtAqI175SSKMD0BFyva4U21BoODwZ6RgX6fr8DiEpjAiIgDANWdADATGP";
     String MEDIA_ID = "C4KMB-5X5YwudJ7p1WfqCJdwFTW7BWyJJltM-UodLXvDzhkNqBlL1_iVvZwM7IiC";
     String TEMPLATE_ID = "EHv9m4ZOoM4GS645ZResbs3gUBhwrIvmS4uWoFigjgs";
 
     /** 回调域名 */
-    String CALLBACK_SERVER = "http://mywx.tunnel.2bdata.com";
+    String CALLBACK_SERVER = "http://mywx.tunnel.echomod.cn";
     String SNSAPI_BASE = "snsapi_base";
     String SNSAPI_USERINFO = "snsapi_userinfo";
     String AUTHORIZE_URL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={APPID}&redirect_uri={REDIRECT_URI}&response_type=code&scope={SCOPE}&state={STATE}#wechat_redirect";

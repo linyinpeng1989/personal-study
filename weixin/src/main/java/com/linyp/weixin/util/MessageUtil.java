@@ -1,10 +1,7 @@
 package com.linyp.weixin.util;
 
 import com.linyp.weixin.constant.WeixinConstant;
-import com.linyp.weixin.controller.po.button.Button;
-import com.linyp.weixin.controller.po.button.ClickButton;
-import com.linyp.weixin.controller.po.button.Menu;
-import com.linyp.weixin.controller.po.button.ViewButton;
+import com.linyp.weixin.controller.po.button.*;
 import com.linyp.weixin.controller.po.message.*;
 import com.linyp.weixin.controller.po.template.Content;
 import com.linyp.weixin.controller.po.template.Data;
@@ -191,10 +188,17 @@ public class MessageUtil {
         button34.setType(WeixinConstant.MENUTYPE_PIC_PHOTO_OR_ALBUM);
         button34.setKey("click_34");
 
-        ClickButton button35 = new ClickButton();
-        button35.setName("地理位置");
-        button35.setType(WeixinConstant.MENUTYPE_LOCATION_SELECT);
-        button35.setKey("click_35");
+        //ClickButton button35 = new ClickButton();
+        //button35.setName("地理位置");
+        //button35.setType(WeixinConstant.MENUTYPE_LOCATION_SELECT);
+        //button35.setKey("click_35");
+
+        MiniProgramButton button35 = new MiniProgramButton();
+        button35.setName("mini");
+        button35.setType(WeixinConstant.MENUTYPE_MINI_PROGRAM);
+        button35.setAppid(WeixinConstant.WXXCX_APPID);
+        button35.setPagepath("pages/index/index");
+        button35.setUrl("https://www.baidu.com");
 
         button3.setSub_button(Arrays.asList(button31, button32, button33, button34, button35));
         menu.setButton(Arrays.asList(button1, button2, button3));

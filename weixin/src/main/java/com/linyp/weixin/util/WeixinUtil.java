@@ -155,4 +155,19 @@ public class WeixinUtil {
         String tempStr = JSON.toJSONString(template);
         return commonHttpClient.doPostStr(url, tempStr, "UTF-8");
     }
+
+    /**
+     * 根据JSCODE获取微信小程序的openId和SessionKey
+     * @param code
+     * @return
+     */
+    public JSONObject getSessionKeyByCode(String code) {
+        String url = WeixinConstant.WXXCX_SESSIONKEY_URL.replace("{APPID}", WeixinConstant.WXXCX_APPID)
+                .replace("{SECRET}", WeixinConstant.WXXCX_APPSECRET)
+                .replace("{JSCODE}", code);
+        CommonHttpClient commonHttpClient = commonHttpClientPoolManager.getCommonHttpClient();
+        String result = commonHttpClient.doGet(url, null);
+        return JSON.parseObject(result);
+    }
+
 }

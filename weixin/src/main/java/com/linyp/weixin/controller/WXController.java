@@ -4,12 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.zxing.WriterException;
 import com.linyp.weixin.constant.WeixinConstant;
 import com.linyp.weixin.controller.param.VerifyParam;
-import com.linyp.weixin.util.MessageUtil;
-import com.linyp.weixin.util.QRCodeUtil;
-import com.linyp.weixin.util.WeixinUtil;
-import com.linyp.weixin.util.XmlConvertUtil;
+import com.linyp.weixin.util.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.bouncycastle.util.encoders.Base64;
 import org.dom4j.DocumentException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +35,14 @@ public class WXController {
     @Resource
     private WeixinUtil weixinUtil;
 
+    private String sessionKey;
+
+    /**
+     * 微信校验服务器接口
+     * @param param
+     * @param response
+     * @throws IOException
+     */
     @RequestMapping(method = RequestMethod.GET)
     public void verify(VerifyParam param, HttpServletResponse response) throws IOException {
         PrintWriter printWriter = response.getWriter();
@@ -46,6 +52,12 @@ public class WXController {
         IOUtils.closeQuietly(printWriter);
     }
 
+    /**
+     * 文本消息接口
+     * @param response
+     * @throws IOException
+     * @throws DocumentException
+     */
     @RequestMapping(method = RequestMethod.POST)
     public void textMessage(HttpServletResponse response) throws IOException, DocumentException {
         PrintWriter printWriter = response.getWriter();
@@ -166,18 +178,30 @@ public class WXController {
         return weixinUtil.getIndustry();
     }
 
+    /**
+     * 获取所有消息模板
+     * @return
+     */
     @RequestMapping(value = "/getAllTemplate", method = RequestMethod.GET)
     @ResponseBody
     public Object getAllTemplate() {
         return weixinUtil.getAllTemplate();
     }
 
+    /**
+     * 发送模板消息
+     * @return
+     */
     @RequestMapping(value = "/sendTemplateMsg", method = RequestMethod.GET)
     @ResponseBody
     public Object sendTemplateMsg() {
         return weixinUtil.sendTemplateMsg();
     }
 
+    /**
+     * 免登陆
+     * @return
+     */
     @RequestMapping(value = "/avoidLogin", method = RequestMethod.GET)
     public String avoidLogin() {
         String code = request.getParameter("code");
@@ -204,6 +228,12 @@ public class WXController {
         return "list";
     }
 
+    /**
+     * 生成二维码图片
+     * @param response
+     * @throws IOException
+     * @throws WriterException
+     */
     @RequestMapping(value = "/qrCode", method = RequestMethod.GET)
     public void qrCode(HttpServletResponse response) throws IOException, WriterException {
         String code = request.getParameter("code");
@@ -228,6 +258,12 @@ public class WXController {
         }
     }
 
+    /**
+     * 生成二维码图片
+     * @param response
+     * @throws IOException
+     * @throws WriterException
+     */
     @RequestMapping(value = "/webQrCode", method = RequestMethod.GET)
     public void webQrCode(HttpServletResponse response) throws IOException, WriterException {
         String url = WeixinConstant.CALLBACK_SERVER + "/wx/showQrCodeContent?departmentId=12345";
@@ -245,6 +281,36 @@ public class WXController {
         PrintWriter printWriter = response.getWriter();
         printWriter.write(departmentId);
         IOUtils.closeQuietly(printWriter);
+    }
+
+    /**
+     * 获取微信小程序SessionKey信息
+     * @return
+     */
+    @RequestMapping(value = "/getSessionInfoKeyByCode", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getSessionInfoKeyByCode() throws IOException {
+        String code = request.getParameter("code");
+        // 获取sessionKey
+        JSONObject jsonObject = weixinUtil.getSessionKeyByCode(code);
+        sessionKey = jsonObject.getString("session_key");
+        return jsonObject;
+    }
+
+    /**
+     * 获取微信小程序SessionKey信息
+     * @return
+     */
+    @RequestMapping(value = "/getWeRunData", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getWeRunData() throws IOException {
+        String ivStr = request.getParameter("ivStr");
+        String enStr = request.getParameter("enStr");
+        // 获取sessionKey
+        byte[] keyBytes = Base64.decode(sessionKey);
+        byte[] ivBytes = Base64.decode(ivStr);
+        byte[] enBytes = Base64.decode(enStr);
+        return AESUtil.decrypt(ivBytes, enBytes, keyBytes);
     }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.objenesis.Objenesis;
 import org.springframework.objenesis.ObjenesisStd;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Map;
@@ -51,6 +52,23 @@ public class ProtoStuffSerializableUtil {
     }
 
     /**
+     * 序列化
+     * @param obj   序列化目标对象
+     * @return
+     */
+    public static <T> String serializeToString(T obj) {
+        try {
+            Class<T> cls = (Class<T>) obj.getClass();
+            Schema<T> schema = getSchema(cls);
+            byte[] bytes = ProtostuffIOUtil.toByteArray(obj, schema, LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
+            return new String(bytes, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * 反序列化
      * @param data  字节数组
      * @param cls   对象类型
@@ -62,6 +80,24 @@ public class ProtoStuffSerializableUtil {
         ProtostuffIOUtil.mergeFrom(data, message, schema);
         return message;
     }
+
+    /**
+     * 反序列化
+     * @param data  字符串
+     * @param cls   对象类型
+     * @return
+     */
+    public static <T> T deserialize(String data, Class<T> cls) {
+        try {
+            byte[] bytes = data.getBytes("UTF-8");
+            return deserialize(bytes, cls);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
     public static void main(String[] args) {
         Student std = new Student("小明", 18, "15900000000");
@@ -82,6 +118,13 @@ public class ProtoStuffSerializableUtil {
         System.out.println("Object Serializable序列化耗时：" + (end2 - begin2));
         Student newStd1 = ObjectSerializableUtil.deserialize(bytes1, Student.class);
         System.out.println(newStd1.toString());
+
+
+        Student std2 = new Student("小张", 18, "15900000000");
+        String str = serializeToString(std2);
+        System.out.println(str.length());
+        Student newstd2 = deserialize(str, Student.class);
+        System.out.println(newstd2.toString());
     }
 
 }

@@ -43,4 +43,13 @@ dependencies {
     /* freemarker */
     compile("org.freemarker:freemarker:2.3.23")
 
+    /* bouncycastle */
+    compile("org.bouncycastle:bcprov-jdk15on:1.58")
+
+    /* codec */
+    compile("commons-codec:commons-codec:1.10")
+
+    /* joda-time */
+    compile("joda-time:joda-time:2.9.9")
+
 }
