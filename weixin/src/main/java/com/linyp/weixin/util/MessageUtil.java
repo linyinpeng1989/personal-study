@@ -23,7 +23,7 @@ public class MessageUtil {
     public static String textMessage(String fromUserName, String toUserName, String content) {
         TextMessage textMessage = new TextMessage();
         textMessage.setContent(content);
-        textMessage.setCreateTime(new Date().getTime());
+        textMessage.setCreateTime(System.currentTimeMillis());
         textMessage.setFromUserName(toUserName);
         textMessage.setToUserName(fromUserName);
         textMessage.setMsgType(WeixinConstant.MESSAGE_TEXT);
@@ -41,7 +41,7 @@ public class MessageUtil {
      */
     public static String newsMessage(String fromUserName, String toUserName) {
         NewsMessage newsMessage = new NewsMessage();
-        newsMessage.setCreateTime(new Date().getTime());
+        newsMessage.setCreateTime(System.currentTimeMillis());
         newsMessage.setFromUserName(toUserName);
         newsMessage.setToUserName(fromUserName);
         newsMessage.setMsgType(WeixinConstant.MESSAGE_NEWS);
@@ -76,7 +76,7 @@ public class MessageUtil {
      */
     public static String imageMessage(String fromUserName, String toUserName) {
         ImageMessage imageMessage = new ImageMessage();
-        imageMessage.setCreateTime(new Date().getTime());
+        imageMessage.setCreateTime(System.currentTimeMillis());
         imageMessage.setFromUserName(toUserName);
         imageMessage.setToUserName(fromUserName);
         imageMessage.setMsgType(WeixinConstant.MESSAGE_IMAGE);
@@ -99,7 +99,7 @@ public class MessageUtil {
      */
     public static String musicMessage(String fromUserName, String toUserName) {
         MusicMessage musicMessage = new MusicMessage();
-        musicMessage.setCreateTime(new Date().getTime());
+        musicMessage.setCreateTime(System.currentTimeMillis());
         musicMessage.setFromUserName(toUserName);
         musicMessage.setToUserName(fromUserName);
         musicMessage.setMsgType(WeixinConstant.MESSAGE_MUSIC);
