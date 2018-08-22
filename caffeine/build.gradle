@@ -1,0 +1,9 @@
+dependencies {
+    compile 'com.github.ben-manes.caffeine:caffeine:2.6.2'
+    compile 'com.google.guava:guava-testlib:26.0-jre'
+
+
+    // 可选扩展
+//     compile 'com.github.ben-manes.caffeine:guava:2.6.2'
+    // compile 'com.github.ben-manes.caffeine:jcache:2.6.2'
+}

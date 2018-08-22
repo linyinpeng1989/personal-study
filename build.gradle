@@ -26,11 +26,9 @@ allprojects {
     }
 
     repositories {
-        /*ivy {
-            url "http://nexus.guahao-inc.com/nexus/content/groups/public/"
-            layout "maven"
-        }
-        maven { url "http://nexus.guahao-inc.com/nexus/content/groups/ProductGroup" }*/
+        /*
+        maven { url "http://nexus.test-inc.com/nexus/content/groups/ProductGroup" }
+        */
         mavenCentral()
     }
 
@@ -46,8 +44,8 @@ allprojects {
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
         options.debug = "on"
-        sourceCompatibility = 10
-        targetCompatibility = 10
+        sourceCompatibility = 8
+        targetCompatibility = 8
     }
 
     tasks.withType(Javadoc) {

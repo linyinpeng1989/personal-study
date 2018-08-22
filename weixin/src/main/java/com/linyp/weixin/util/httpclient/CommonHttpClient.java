@@ -252,9 +252,7 @@ public class CommonHttpClient {
 					getter.addHeader(key, headers.get(key));
 				}
 			}
-
 			HttpClientContext context = HttpClientContext.create();
-
 			CloseableHttpResponse response = client.execute(getter, context);
 			try {
 				HttpEntity entity = response.getEntity();

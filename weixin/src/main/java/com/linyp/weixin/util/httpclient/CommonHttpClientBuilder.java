@@ -38,6 +38,5 @@ public class CommonHttpClientBuilder extends HttpClientBuilder {
 		cm.setDefaultMaxPerRoute(defaultMaxPerRoute);
 		return (CommonHttpClientBuilder) this.setConnectionManager(cm);
 	}
-	
-	
+
 }
