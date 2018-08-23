@@ -20,8 +20,6 @@ rootProject.name = 'personal-study'
 //findProject(':design_pattern')?.name = 'personal-study-design_pattern'
 //include 'rpcdemo'
 //findProject(':rpcdemo')?.name = 'personal-study-rpcdemo'
-//include 'hystrix'
-//findProject(':hystrix')?.name = 'personal-study-hystrix'
 include 'caffeine'
 findProject(':caffeine')?.name = 'personal-study-caffeine'
 
