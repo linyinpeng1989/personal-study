@@ -20,6 +20,7 @@ public class ForecastDisplay implements Observer, DisplayElement {
 		display();
 	}
 
+	@Override
 	public void display() {
 		System.out.print("Forecast: ");
 		if (currentPressure > lastPressure) {
@@ -29,5 +30,10 @@ public class ForecastDisplay implements Observer, DisplayElement {
 		} else if (currentPressure < lastPressure) {
 			System.out.println("Watch out for cooler, rainy weather");
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+
 	}
 }

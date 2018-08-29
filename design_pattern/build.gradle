@@ -1,3 +1,9 @@
 dependencies {
+    /* Cglib动态代理 */
+    compile('org.ow2.asm:asm:6.2.1')
+    compile('cglib:cglib:3.2.7')
+
+    /* Common-io */
+    compile('commons-io:commons-io:2.6')
 
 }

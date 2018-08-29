@@ -1,9 +1,8 @@
 package com.headfirst.proxy.virtualproxy;
 
-import java.net.*;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
 
 class ImageProxy implements Icon {
 	ImageIcon imageIcon;
@@ -12,7 +11,8 @@ class ImageProxy implements Icon {
 	boolean retrieving = false;
      
 	public ImageProxy(URL url) { imageURL = url; }
-     
+
+	@Override
 	public int getIconWidth() {
 		if (imageIcon != null) {
             return imageIcon.getIconWidth();
@@ -20,7 +20,8 @@ class ImageProxy implements Icon {
 			return 800;
 		}
 	}
- 
+
+	@Override
 	public int getIconHeight() {
 		if (imageIcon != null) {
             return imageIcon.getIconHeight();
@@ -28,7 +29,8 @@ class ImageProxy implements Icon {
 			return 600;
 		}
 	}
-     
+
+	@Override
 	public void paintIcon(final Component c, Graphics  g, int x,  int y) {
 		if (imageIcon != null) {
 			imageIcon.paintIcon(c, g, x, y);
@@ -38,6 +40,7 @@ class ImageProxy implements Icon {
 				retrieving = true;
 
 				retrievalThread = new Thread(new Runnable() {
+					@Override
 					public void run() {
 						try {
 							imageIcon = new ImageIcon(imageURL, "CD Cover");

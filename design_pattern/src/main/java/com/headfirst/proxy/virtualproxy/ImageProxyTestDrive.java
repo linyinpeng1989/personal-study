@@ -1,10 +1,12 @@
 package com.headfirst.proxy.virtualproxy;
 
-import java.net.*;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.util.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 public class ImageProxyTestDrive {
 	ImageComponent imageComponent;
@@ -35,13 +37,14 @@ public class ImageProxyTestDrive {
 		for(Enumeration e = cds.keys(); e.hasMoreElements();) {
 			String name = (String)e.nextElement();
         	JMenuItem menuItem = new JMenuItem(name);
-        	menu.add(menuItem); 
-        	menuItem.addActionListener(new ActionListener() {
-          		  public void actionPerformed(ActionEvent event) {
-           		     imageComponent.setIcon(new ImageProxy(getCDUrl(event.getActionCommand())));
+        	menu.add(menuItem);
+			menuItem.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent event) {
+					imageComponent.setIcon(new ImageProxy(getCDUrl(event.getActionCommand())));
 					frame.repaint();
-           	      }
-        	});
+				}
+			});
 		}
  		
 		// set up frame and menus
