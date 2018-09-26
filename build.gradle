@@ -44,8 +44,8 @@ allprojects {
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
         options.debug = "on"
-        sourceCompatibility = 8
-        targetCompatibility = 8
+        sourceCompatibility = 10
+        targetCompatibility = 10
     }
 
     tasks.withType(Javadoc) {

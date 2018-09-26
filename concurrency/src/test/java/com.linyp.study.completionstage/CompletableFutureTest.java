@@ -147,6 +147,7 @@ public class CompletableFutureTest {
      * 完成计算异常
      */
     private static void completeExceptionallyExample() {
+        // CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS)从JDK9开始
         CompletableFuture cf = CompletableFuture.completedFuture("message").thenApplyAsync(String::toUpperCase,
                 CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
         CompletableFuture exceptionHandler = cf.handle((s, th) -> (th != null) ? "message upon cancel" : "");
@@ -348,13 +349,13 @@ public class CompletableFutureTest {
     }
 
     private static String delayedUpperCase(String s) {
-        CompletableFuture<String> stringCompletableFuture = CompletableFuture.completedFuture(s).thenApplyAsync(str -> str.toUpperCase(),
+        CompletableFuture<String> stringCompletableFuture = CompletableFuture.completedFuture(s).thenApplyAsync(String::toUpperCase,
                 CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
         return stringCompletableFuture.join();
     }
 
     private static String delayedLowerCase(String s) {
-        CompletableFuture<String> stringCompletableFuture = CompletableFuture.completedFuture(s).thenApplyAsync(str -> str.toLowerCase(),
+        CompletableFuture<String> stringCompletableFuture = CompletableFuture.completedFuture(s).thenApplyAsync(String::toUpperCase,
                 CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
         return stringCompletableFuture.join();
     }
