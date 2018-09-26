@@ -2,11 +2,11 @@ package com.headfirst.factory.pizzaaf;
 
 public interface PizzaIngredientFactory {
  
-	public Dough createDough();
-	public Sauce createSauce();
-	public Cheese createCheese();
-	public Veggies[] createVeggies();
-	public Pepperoni createPepperoni();
-	public Clams createClam();
+	Dough createDough();
+	Sauce createSauce();
+	Cheese createCheese();
+	Veggies[] createVeggies();
+	Pepperoni createPepperoni();
+	Clams createClam();
  
 }

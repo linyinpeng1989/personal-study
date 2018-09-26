@@ -1,5 +1,8 @@
 package com.headfirst.factory.pizzas;
 
+/**
+ * 简单工厂模式
+ */
 public class SimplePizzaFactory {
 
 	public Pizza createPizza(String type) {
