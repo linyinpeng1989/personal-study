@@ -44,8 +44,8 @@ allprojects {
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
         options.debug = "on"
-        sourceCompatibility = 10
-        targetCompatibility = 10
+        sourceCompatibility = 8
+        targetCompatibility = 8
     }
 
     tasks.withType(Javadoc) {
@@ -82,8 +82,21 @@ allprojects {
     }*/
 
     dependencies {
-        /* Junit */
+        /* junit */
         testCompile("junit:junit:4.12")
+
+        /* fastjson */
+        compile 'com.alibaba:fastjson:1.2.62'
+
+        /* lombok */
+        compile 'org.projectlombok:lombok:1.18.10'
+
+        /* commons-lang3 */
+        compile 'org.apache.commons:commons-lang3:3.9'
+
+        /* commons-collections */
+        compile 'commons-collections:commons-collections:3.2.2'
+
     }
 }
 

@@ -1,4 +1,4 @@
-package com.linyp.study.algorithm;
+package com.linyp.study.algorithm.sort;
 
 import java.util.Arrays;
 
@@ -10,20 +10,19 @@ import java.util.Arrays;
 public class DirectInsertSort {
     public static void main(String[] args) {
         int[] array = new int[]{65,27,59,64,58};
-        //insertSort(array,array.length);
-        binaryInsertSort(array,array.length);
+        //insertSort(array);
+        binaryInsertSort(array);
         System.out.println(Arrays.toString(array));
     }
 
     /**
      * 直接插入排序算法(升序)
      * @param array 无序数组
-     * @param arrayLength   无序数组中元素的个数
      */
-    public static void insertSort(int[] array, int arrayLength) {
+    public static void insertSort(int[] array) {
         int temp;
         // 从第2个数据开始插入
-        for (int i = 1; i < arrayLength; i++) {
+        for (int i = 1; i < array.length; i++) {
             int j = i-1;
             // 记录要插入的数据
             temp = array[i];
@@ -42,10 +41,9 @@ public class DirectInsertSort {
     /**
      * 通过二分查找进行直接插入排序(升序)
      * @param array 无序数组
-     * @param arrayLength   无序数组中元素的个数
      */
-    public static void binaryInsertSort(int[] array, int arrayLength) {
-        for (int i = 1; i < arrayLength; i++) { // 从第2个数据开始插入
+    public static void binaryInsertSort(int[] array) {
+        for (int i = 1; i < array.length; i++) { // 从第2个数据开始插入
             int index = findInsertIndex(array, i, array[i]);    // 二分寻找插入的位置
             if (i != index) {    // 插入位置不为i的时候，移动并插入
                 int j = i,temp = array[i];

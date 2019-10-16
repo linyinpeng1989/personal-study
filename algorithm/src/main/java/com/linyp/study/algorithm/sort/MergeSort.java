@@ -1,4 +1,4 @@
-package com.linyp.study.algorithm;
+package com.linyp.study.algorithm.sort;
 
 import java.util.Arrays;
 
